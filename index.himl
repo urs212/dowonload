@@ -1,86 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파일 다운로드</title>
-    <style>
-        /* 배경 스타일 */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-        }
-
-        /* 중앙 박스 */
-        .container {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 80%;
-            max-width: 400px;
-        }
-
-        /* 제목 스타일 */
-        h1 {
-            font-size: 24px;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        /* 버튼 스타일 */
-        .download-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            color: white;
-        }
-
-        /* 개별 버튼 색상 */
-        .mom { background: #ff6b81; }
-        .yoon { background: #6a89cc; }
-        .dad { background: #78e08f; }
-
-        /* 버튼 호버 효과 */
-        .download-btn:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>다운로드 센터</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="container">
-        <h1>파일 다운로드</h1>
-        <button class="download-btn mom" onclick="downloadFile('mom')">엄마</button>
-        <button class="download-btn yoon" onclick="downloadFile('yoon')">임시윤</button>
-        <button class="download-btn dad" onclick="downloadFile('dad')">아빠</button>
+  <div id="cookieModal" class="modal">
+    <div class="modal-content">
+      <p>이 사이트는 쿠키를 사용합니다. 동의하시겠습니까?</p>
+      <button onclick="handleCookie(false)">거절</button>
+      <button onclick="handleCookie(true)">모두 수락</button>
     </div>
+  </div>
 
-    <script>
-        function downloadFile(person) {
-            const links = {
-                "mom": "https://drive.google.com/file/d/1T2lTkVUm6bRVuREBf28gvbA4jOecq_XX/view?usp=sharing",
-                "yoon": "https://drive.google.com/file/d/1zkmvfbjM78vCdHaCU3sIK1zN6XVg3kW_/view?usp=sharing",
-                "dad": "https://drive.google.com/file/d/1PeG_P2bi0G8orreM9PZjTouwSbFWVQaD/view?usp=sharing"
-            };
-            window.location.href = links[person];
-        }
-    </script>
+  <div id="downloadSection" style="display:none;">
+    <h1>파일 다운로드</h1>
+    <button onclick="openPrivacyModal()">다운로드</button>
+  </div>
 
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <p>개인정보 제공에 동의하십니까?</p>
+      <button onclick="handlePrivacy(false)">거절</button>
+      <button onclick="handlePrivacy(true)">수락</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
